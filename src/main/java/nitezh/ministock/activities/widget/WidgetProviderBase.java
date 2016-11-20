@@ -176,12 +176,12 @@ public class WidgetProviderBase extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         new CustomAlarmManager(context).reinitialize();
+        updateWidgetsFromCache(context);
     }
 
     @Override
     public void onEnabled(Context context) {
         super.onEnabled(context);
-
         new CustomAlarmManager(context).reinitialize();
     }
 
