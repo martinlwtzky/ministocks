@@ -40,6 +40,7 @@ import nitezh.ministock.R;
 import nitezh.ministock.WidgetProvider;
 import nitezh.ministock.domain.*;
 import nitezh.ministock.utils.CurrencyTools;
+import nitezh.ministock.utils.CustomNotificationManager;
 import nitezh.ministock.utils.NumberTools;
 import nitezh.ministock.utils.ReflectionTools;
 
@@ -65,6 +66,8 @@ class WidgetView {
     private final Context context;
     private final HashMap<ViewType, Boolean> enabledViews;
 
+    private static CustomNotificationManager mCustomNotificationManager;
+
     public WidgetView(Context context, int appWidgetId, UpdateType updateMode,
                       HashMap<String, StockQuote> quotes, String quotesTimeStamp) {
         WidgetRepository widgetRepository = new AndroidWidgetRepository(context);
@@ -82,6 +85,8 @@ class WidgetView {
 
         this.remoteViews = this.getBlankRemoteViews(this.widget, context.getPackageName());
         this.enabledViews = this.calculateEnabledViews(this.widget);
+
+        mCustomNotificationManager = new CustomNotificationManager(context, appWidgetId);
     }
 
     private RemoteViews getBlankRemoteViews(Widget widget, String packageName) {
@@ -201,6 +206,8 @@ class WidgetView {
 
         PortfolioStock portfolioStock = this.portfolioStocks.get(symbol);
         WidgetStock widgetStock = new WidgetStock(quote, portfolioStock);
+
+        mCustomNotificationManager.updateNotifications(context, widgetStock);
 
         updateWidgetRowWithDefaults(widgetRow, widgetStock);
 

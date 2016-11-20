@@ -28,6 +28,7 @@ package nitezh.ministock.domain;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
+import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -56,7 +57,6 @@ class AndroidWidget implements Widget {
         this.context = context;
         this.id = id;
         this.storage = this.getStorage();
-
         this.size = this._getSize(); // This is used a lot so don't get from storage each time
     }
 
@@ -121,6 +121,11 @@ class AndroidWidget implements Widget {
     @Override
     public void enableDailyChangeView() {
         this.storage.putBoolean("show_absolute_change", true);
+    }
+
+    @Override
+    public void enableShowNotifications() {
+        this.storage.putBoolean("show_notifications", true);
     }
 
     @Override
@@ -250,6 +255,11 @@ class AndroidWidget implements Widget {
     @Override
     public boolean showShortTime() {
         return this.storage.getBoolean("short_time", false);
+    }
+
+    @Override
+    public boolean shouldShowNotifications() {
+        return this.storage.getBoolean("show_notifications", false);
     }
 
     @Override

@@ -80,6 +80,10 @@
             android:key="advanced"
             android:summary="Advanced widget settings"
             android:title="Settings">
+            <CheckBoxPreference
+                android:defaultValue="false"
+                android:title="Display notifications"
+                android:key="show_notifications" />
             <PreferenceScreen
                 android:key="widget_views"
                 android:summary="Choose which widget views to use"

@@ -47,6 +47,7 @@ public class CustomAlarmManager {
         this.alarmManager = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
         this.pendingIntent = PendingIntent.getBroadcast(context.getApplicationContext(), 0,
                 new Intent(ALARM_UPDATE), 0);
+        this.reinitialize();
     }
 
     private Long getUpdateInterval() {

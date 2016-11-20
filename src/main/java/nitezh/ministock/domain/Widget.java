@@ -18,6 +18,8 @@ public interface Widget {
 
     void enableDailyChangeView();
 
+    void enableShowNotifications();
+
     void setStock1(String s);
 
     void setStock1Summary(String s);
@@ -81,4 +83,7 @@ public interface Widget {
     boolean alwaysUseShortName();
 
     boolean shouldUpdateOnRightTouch();
-}
+
+    boolean shouldShowNotifications();
+
+    }

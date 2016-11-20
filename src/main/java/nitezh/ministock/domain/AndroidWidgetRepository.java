@@ -35,7 +35,6 @@ import java.util.Set;
 import nitezh.ministock.PreferenceStorage;
 import nitezh.ministock.Storage;
 
-
 public class AndroidWidgetRepository implements WidgetRepository {
 
     private final Context context;
@@ -94,6 +93,9 @@ public class AndroidWidgetRepository implements WidgetRepository {
         if (widget.isNarrow()) {
             widget.enablePercentChangeView();
         }
+
+
+        //widget.enableShowNotifications();
 
         widget.setStock1("^DJI");
         widget.setStock1Summary("Dow Jones Industrial Average");

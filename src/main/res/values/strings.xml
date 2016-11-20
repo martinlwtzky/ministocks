@@ -24,8 +24,10 @@
   -->
 
 <resources>
-    <string name="app_name">Ministocks</string>
+    <string name="app_name">MinistocksN</string>
     <string name="prefs_name">nitezh.ministock_preferences</string>
+    <string name="notification_prefs_name">nitezh.ministock_notification_preferences</string>
+
 
     <string name="hello">Hello World!</string>
 

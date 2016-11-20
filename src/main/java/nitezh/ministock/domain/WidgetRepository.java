@@ -27,6 +27,7 @@ package nitezh.ministock.domain;
 import java.util.Set;
 
 
+
 public interface WidgetRepository {
 
     java.util.List<Integer> getIds();
@@ -40,4 +41,5 @@ public interface WidgetRepository {
     Widget getWidget(int id);
 
     Widget addWidget(int id, int size);
+
 }

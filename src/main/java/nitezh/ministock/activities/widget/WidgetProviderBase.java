@@ -50,7 +50,6 @@ import nitezh.ministock.utils.DateTools;
 
 
 public class WidgetProviderBase extends AppWidgetProvider {
-
     private static void applyUpdate(Context context, int appWidgetId, UpdateType updateMode,
                                     HashMap<String, StockQuote> quotes, String quotesTimeStamp) {
         WidgetView widgetView = new WidgetView(context, appWidgetId, updateMode,
@@ -112,6 +111,7 @@ public class WidgetProviderBase extends AppWidgetProvider {
         }
 
         updateWidgets(context, doUpdates ? UpdateType.VIEW_UPDATE : UpdateType.VIEW_NO_UPDATE);
+
     }
 
     private void handleTouch(Context context, int appWidgetId, String action) {
@@ -176,7 +176,6 @@ public class WidgetProviderBase extends AppWidgetProvider {
     @Override
     public void onUpdate(Context context, AppWidgetManager appWidgetManager, int[] appWidgetIds) {
         new CustomAlarmManager(context).reinitialize();
-        updateWidgetsFromCache(context);
     }
 
     @Override
@@ -247,7 +246,6 @@ public class WidgetProviderBase extends AppWidgetProvider {
                     widgetRepository.getWidget(this.appWidgetId).getSymbols(),
                     updateType == UpdateType.VIEW_UPDATE);
             this.timeStamp = quoteRepository.getTimeStamp();
-
             return null;
         }
 

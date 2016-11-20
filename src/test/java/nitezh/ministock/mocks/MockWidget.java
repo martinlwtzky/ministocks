@@ -178,7 +178,17 @@ public class MockWidget implements Widget {
     }
 
     @Override
+    public boolean shouldShowNotifications() {
+        return false;
+    }
+
+    @Override
     public void enablePercentChangeView() {
+    }
+
+    @Override
+    public void enableShowNotifications() {
+
     }
 
     @Override
@@ -212,4 +222,6 @@ public class MockWidget implements Widget {
     @Override
     public void setSize(int size) {
     }
+
+
 }
