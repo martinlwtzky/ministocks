@@ -35,26 +35,33 @@ import android.text.style.StyleSpan;
 import android.view.View;
 import android.widget.RemoteViews;
 
-import nitezh.ministock.PreferenceStorage;
-import nitezh.ministock.R;
-import nitezh.ministock.WidgetProvider;
-import nitezh.ministock.domain.*;
-import nitezh.ministock.utils.CurrencyTools;
-import nitezh.ministock.utils.CustomNotificationManager;
-import nitezh.ministock.utils.NumberTools;
-import nitezh.ministock.utils.ReflectionTools;
-
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 
+import nitezh.ministock.PreferenceStorage;
+import nitezh.ministock.R;
+import nitezh.ministock.WidgetProvider;
+import nitezh.ministock.domain.AndroidWidgetRepository;
+import nitezh.ministock.domain.PortfolioStock;
+import nitezh.ministock.domain.PortfolioStockRepository;
+import nitezh.ministock.domain.StockQuote;
+import nitezh.ministock.domain.Widget;
+import nitezh.ministock.domain.WidgetRepository;
+import nitezh.ministock.domain.WidgetStock;
+import nitezh.ministock.utils.CurrencyTools;
+import nitezh.ministock.utils.CustomNotificationManager;
+import nitezh.ministock.utils.NumberTools;
+import nitezh.ministock.utils.ReflectionTools;
+
 import static nitezh.ministock.activities.widget.WidgetProviderBase.UpdateType;
 import static nitezh.ministock.activities.widget.WidgetProviderBase.ViewType;
 
 class WidgetView {
 
+    private static CustomNotificationManager mCustomNotificationManager;
     private final RemoteViews remoteViews;
     private final Widget widget;
     private final boolean hasPortfolioData;
@@ -66,10 +73,8 @@ class WidgetView {
     private final Context context;
     private final HashMap<ViewType, Boolean> enabledViews;
 
-    private static CustomNotificationManager mCustomNotificationManager;
-
-    public WidgetView(Context context, int appWidgetId, UpdateType updateMode,
-                      HashMap<String, StockQuote> quotes, String quotesTimeStamp) {
+    WidgetView(Context context, int appWidgetId, UpdateType updateMode,
+               HashMap<String, StockQuote> quotes, String quotesTimeStamp) {
         WidgetRepository widgetRepository = new AndroidWidgetRepository(context);
 
         this.context = context;
@@ -160,7 +165,7 @@ class WidgetView {
         return span;
     }
 
-    public void setOnClickPendingIntents() {
+    void setOnClickPendingIntents() {
         Intent leftTouchIntent = new Intent(this.context, WidgetProvider.class);
         leftTouchIntent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, this.widget.getId());
         leftTouchIntent.setAction("LEFT");
@@ -352,7 +357,7 @@ class WidgetView {
 
         if (!widget.isNarrow()) {
             widgetRow.setVolume(widgetStock.getVolume());
-            widgetRow.setVolumeColor(WidgetColors.VOLUME);
+            widgetRow.setVolumeColor();
             widgetRow.setStockInfoExtra(widgetStock.getDailyChange());
             widgetRow.setStockInfoExtraColor(WidgetColors.NA);
         }
@@ -410,7 +415,7 @@ class WidgetView {
         }
     }
 
-    public RemoteViews getRemoteViews() {
+    RemoteViews getRemoteViews() {
         return remoteViews;
     }
 
@@ -447,7 +452,7 @@ class WidgetView {
         this.remoteViews.setTextColor(ReflectionTools.getField("text" + row + col), color);
     }
 
-    public void applyPendingChanges() {
+    void applyPendingChanges() {
         int widgetDisplay = this.getNextView(this.updateMode);
         this.clear();
 
@@ -656,7 +661,7 @@ class WidgetView {
                 && !hasMultipleDefaultViews);
     }
 
-    public boolean hasPendingChanges() {
+    boolean hasPendingChanges() {
         return (!this.quotes.isEmpty() || this.canChangeView());
     }
 }

@@ -26,35 +26,40 @@ package nitezh.ministock.domain;
 
 import android.content.Context;
 
-import nitezh.ministock.utils.StorageCache;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
 import java.text.RuleBasedCollator;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Locale;
+import java.util.Map;
+import java.util.Set;
 
 import nitezh.ministock.DialogTools;
 import nitezh.ministock.Storage;
 import nitezh.ministock.UserData;
 import nitezh.ministock.utils.CurrencyTools;
 import nitezh.ministock.utils.NumberTools;
+import nitezh.ministock.utils.StorageCache;
 
 public class PortfolioStockRepository {
     public static final String PORTFOLIO_JSON = "portfolioJson";
     public static final String WIDGET_JSON = "widgetJson";
-
-    public HashMap<String, StockQuote> stocksQuotes = new HashMap<>();
-    public HashMap<String, PortfolioStock> portfolioStocksInfo = new HashMap<>();
-    private Set<String> widgetsStockSymbols = new HashSet<>();
-
     private static final HashMap<String, PortfolioStock> mPortfolioStocks = new HashMap<>();
     private static boolean mDirtyPortfolioStockMap = true;
-
     private final WidgetRepository widgetRepository;
     private final Storage mAppStorage;
+    public HashMap<String, StockQuote> stocksQuotes = new HashMap<>();
+    HashMap<String, PortfolioStock> portfolioStocksInfo = new HashMap<>();
+    private Set<String> widgetsStockSymbols = new HashSet<>();
 
     public PortfolioStockRepository(Storage appStorage, WidgetRepository widgetRepository) {
         this.mAppStorage = appStorage;
@@ -64,11 +69,11 @@ public class PortfolioStockRepository {
         this.portfolioStocksInfo = getPortfolioStocksInfo(widgetsStockSymbols);
     }
 
-    public static boolean isDirtyPortfolioStockMap() {
+    private static boolean isDirtyPortfolioStockMap() {
         return mDirtyPortfolioStockMap;
     }
 
-    public static void setDirtyPortfolioStockMap(boolean mDirtyPortfolioStockMap) {
+    static void setDirtyPortfolioStockMap(boolean mDirtyPortfolioStockMap) {
         PortfolioStockRepository.mDirtyPortfolioStockMap = mDirtyPortfolioStockMap;
     }
 
@@ -255,7 +260,7 @@ public class PortfolioStockRepository {
         return stocksJson;
     }
 
-    public HashMap<String, PortfolioStock> getStocks() {
+    HashMap<String, PortfolioStock> getStocks() {
         if (!isDirtyPortfolioStockMap()) {
             return mPortfolioStocks;
         }
@@ -355,7 +360,7 @@ public class PortfolioStockRepository {
         this.updateStock(symbol, "", "", "", "", "", "");
     }
 
-    public void removeUnused() {
+    void removeUnused() {
         List<String> symbols = new ArrayList<>(this.portfolioStocksInfo.keySet());
         for (String symbol : symbols) {
             String price = this.portfolioStocksInfo.get(symbol).getPrice();
@@ -370,7 +375,7 @@ public class PortfolioStockRepository {
         this.persist();
     }
 
-    public enum PortfolioField {
+    enum PortfolioField {
         PRICE, DATE, QUANTITY, LIMIT_HIGH, LIMIT_LOW, CUSTOM_DISPLAY, SYMBOL_2
     }
 }

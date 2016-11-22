@@ -33,7 +33,7 @@ import java.util.Locale;
 
 public class NumberTools {
 
-    private static int MAX_FRACTIONAL_DIGITS = 5;
+    private static final int MAX_FRACTIONAL_DIGITS = 5;
 
     private NumberTools() {
     }
@@ -153,6 +153,7 @@ public class NumberTools {
 
     public static String validatedDoubleString(String value) throws ParseException {
         NumberFormat format = NumberFormat.getNumberInstance();
+        format.setGroupingUsed(false);
         format.setMaximumFractionDigits(MAX_FRACTIONAL_DIGITS);
 
         return format.format(parseDouble(value));

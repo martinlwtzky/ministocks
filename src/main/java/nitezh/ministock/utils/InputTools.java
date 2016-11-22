@@ -36,7 +36,6 @@ public class InputTools {
 
     public static DigitsKeyListener getDecimalKeyListener() {
         char separator = DecimalFormatSymbols.getInstance().getDecimalSeparator();
-
         return DigitsKeyListener.getInstance("0123456789" + separator);
     }
 

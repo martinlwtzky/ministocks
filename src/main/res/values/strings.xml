@@ -28,8 +28,28 @@
     <string name="prefs_name">nitezh.ministock_preferences</string>
     <string name="notification_prefs_name">nitezh.ministock_notification_preferences</string>
 
-
-    <string name="hello">Hello World!</string>
+    <string name="loading_data_">loading data…</string>
+    <string name="no_description">No description</string>
+    <string name="buy_price_">Buy price:</string>
+    <string name="buy_date_">Buy date:</string>
+    <string name="quantity_">Quantity:</string>
+    <string name="price_">Price:</string>
+    <string name="high_alert_">High alert:</string>
+    <string name="low_alert_">Low alert:</string>
+    <string name="last_ch_">Last ch:</string>
+    <string name="total_">Total:</string>
+    <string name="holding_">Holding:</string>
+    <string name="price_required">Price (required)</string>
+    <string name="date_yyyy_mm_dd">Date (yyyy-mm-dd)</string>
+    <string name="optional">optional</string>
+    <string name="quantity">Quantity</string>
+    <string name="limit_colour_change">When the limits are triggered the stock price will change colour in the widget.</string>
+    <string name="high_price_limit">High price limit</string>
+    <string name="low_price_limit">Low price limit</string>
+    <string name="custom_description">You may specify custom text to appear instead of the standard description.</string>
+    <string name="custom_display_text">Custom display text</string>
+    <string name="ok">OK</string>
+    <string name="cancel">Cancel</string>
 
     <string-array name="background_entries">
         <item>Solid</item>
@@ -64,15 +84,6 @@
         <item>remove</item>
     </string-array>
 
-    <string-array name="price_colour_entries">
-        <item>White</item>
-        <item>Gray</item>
-    </string-array>
-    <string-array name="price_colour_entryvalues">
-        <item>white</item>
-        <item>gray</item>
-    </string-array>
-
     <string-array name="text_style_entries">
         <item>Normal</item>
         <item>Bold</item>
@@ -100,6 +111,4 @@
         <item>86400000</item>
     </string-array>
 
-    <string name="symbolNotFound">Symbol \'%s\' is not found. Press to add it anyway.
-    </string>
 </resources>

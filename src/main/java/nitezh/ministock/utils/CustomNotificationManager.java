@@ -19,9 +19,9 @@ import nitezh.ministock.domain.WidgetStock;
 
 public class CustomNotificationManager {
 
-    protected int widgetId = -1;
-    protected NotificationManager notificationManager;
-    protected SharedPreferences sharedpreferences;
+    private int widgetId = -1;
+    private NotificationManager notificationManager;
+    private SharedPreferences sharedpreferences;
 
     public CustomNotificationManager(Context context, int widgetId) {
         this.widgetId = widgetId;
