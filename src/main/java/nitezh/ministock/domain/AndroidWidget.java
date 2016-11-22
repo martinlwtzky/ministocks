@@ -28,7 +28,6 @@ package nitezh.ministock.domain;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
-import android.util.Log;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -260,6 +259,11 @@ class AndroidWidget implements Widget {
     @Override
     public boolean shouldShowNotifications() {
         return this.storage.getBoolean("show_notifications", false);
+    }
+
+    @Override
+    public boolean shouldVibrateOnNotifications() {
+        return this.storage.getBoolean("vibrate", false);
     }
 
     @Override

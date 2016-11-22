@@ -19,13 +19,13 @@ import nitezh.ministock.domain.WidgetStock;
 
 public class CustomNotificationManager {
 
+    protected int widgetId = -1;
+    protected NotificationManager notificationManager;
+    protected SharedPreferences sharedpreferences;
+
     public CustomNotificationManager(Context context, int widgetId) {
         this.widgetId = widgetId;
     }
-
-    int widgetId = -1;
-    NotificationManager notificationManager;
-    SharedPreferences sharedpreferences;
 
     public void updateNotifications(Context context, WidgetStock widgetStock){
         sharedpreferences = context.getSharedPreferences(context.getString(R.string.notification_prefs_name), Context.MODE_PRIVATE);
@@ -33,12 +33,12 @@ public class CustomNotificationManager {
 
         if (!widgetStock.getLimitHighTriggered() && !widgetStock.getLimitLowTriggered()) {
             editor.putInt(widgetStock.getLongName(), 0);
-            editor.commit();
+            editor.apply();
             return;
         }
         if (sharedpreferences.getInt(widgetStock.getLongName(), 0) == 0) {
             editor.putInt(widgetStock.getLongName(), 1);
-            editor.commit();
+            editor.apply();
         }
 
         WidgetRepository repository = new AndroidWidgetRepository(context);
@@ -48,7 +48,7 @@ public class CustomNotificationManager {
             if(sharedpreferences.getInt(widgetStock.getLongName(), 0) == 1){
                 buildNotification(context, widgetStock);
                 editor.putInt(widgetStock.getLongName(), 2);
-                editor.commit();
+                editor.apply();
             }
         }
     }
@@ -56,6 +56,8 @@ public class CustomNotificationManager {
     private void buildNotification(Context context, WidgetStock widgetStock){
         notificationManager = (NotificationManager)context.getSystemService(Context.NOTIFICATION_SERVICE);
         Notification.Builder builder = new Notification.Builder(context);
+
+        long[] vibratePattern = {0, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100, 100};
 
         builder
                 .setSmallIcon(R.drawable.icon)
@@ -66,6 +68,12 @@ public class CustomNotificationManager {
                 .setLights(0xFF00FF00, 500, 500) //setLights (int argb, int onMs, int offMs)
                 .setOnlyAlertOnce(true)
                 .setAutoCancel(true);
+
+        WidgetRepository repository = new AndroidWidgetRepository(context);
+        Widget widget = repository.getWidget(widgetId);
+        if (widget.shouldVibrateOnNotifications()) {
+            builder.setVibrate(vibratePattern);
+        }
 
         Notification notification = builder.build();
 

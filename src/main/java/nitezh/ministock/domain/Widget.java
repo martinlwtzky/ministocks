@@ -86,4 +86,5 @@ public interface Widget {
 
     boolean shouldShowNotifications();
 
+    boolean shouldVibrateOnNotifications();
     }

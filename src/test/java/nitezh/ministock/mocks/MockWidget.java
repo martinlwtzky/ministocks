@@ -183,6 +183,11 @@ public class MockWidget implements Widget {
     }
 
     @Override
+    public boolean shouldVibrateOnNotifications() {
+        return false;
+    }
+
+    @Override
     public void enablePercentChangeView() {
     }
 
