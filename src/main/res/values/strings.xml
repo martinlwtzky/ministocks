@@ -50,6 +50,7 @@
     <string name="custom_display_text">Custom display text</string>
     <string name="ok">OK</string>
     <string name="cancel">Cancel</string>
+    <string name="widget_background">Widget Background</string>
 
     <string-array name="background_entries">
         <item>Solid</item>

@@ -29,11 +29,6 @@ import android.app.backup.BackupManager;
 import android.content.Context;
 import android.content.Intent;
 
-import nitezh.ministock.domain.AndroidWidgetRepository;
-import nitezh.ministock.domain.PortfolioStockRepository;
-import nitezh.ministock.domain.Widget;
-import nitezh.ministock.domain.WidgetRepository;
-
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -45,11 +40,16 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.Callable;
 
+import nitezh.ministock.domain.AndroidWidgetRepository;
+import nitezh.ministock.domain.PortfolioStockRepository;
+import nitezh.ministock.domain.Widget;
+import nitezh.ministock.domain.WidgetRepository;
+
 
 public class UserData {
 
     // Object for intrinsic lock
-    public static final Object sFileBackupLock = new Object();
+    static final Object sFileBackupLock = new Object();
 
     public static void cleanupPreferenceFiles(Context context) {
         ArrayList<String> preferencesPathsInUse = getPreferencesPathsInUse(context);

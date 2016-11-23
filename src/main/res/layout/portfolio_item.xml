@@ -44,7 +44,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Price (required)"
+                android:text="@string/price_required"
                     android:textColor="#FFFFFF"/>
 
             <EditText
@@ -67,7 +67,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Date (yyyy-mm-dd)"
+                android:text="@string/date_yyyy_mm_dd"
                     android:textColor="#FFFFFF"/>
 
             <EditText
@@ -75,7 +75,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="optional"
+                android:hint="@string/optional"
                     android:imeOptions="actionDone"/>
         </LinearLayout>
 
@@ -91,7 +91,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Quantity"
+                android:text="@string/quantity"
                     android:textColor="#FFFFFF"/>
 
             <EditText
@@ -99,7 +99,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="optional"
+                android:hint="@string/optional"
                     android:imeOptions="actionDone"/>
         </LinearLayout>
 
@@ -117,7 +117,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="When the limits are triggered the stock price will change colour in the widget."/>
+                android:text="@string/limit_colour_change" />
         </LinearLayout>
 
         <LinearLayout
@@ -132,7 +132,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="High price limit"
+                android:text="@string/high_price_limit"
                     android:textColor="#FFFFFF"/>
 
             <EditText
@@ -140,7 +140,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="optional"
+                android:hint="@string/optional"
                     android:imeOptions="actionDone"/>
         </LinearLayout>
 
@@ -156,7 +156,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Low price limit"
+                android:text="@string/low_price_limit"
                     android:textColor="#FFFFFF"/>
 
             <EditText
@@ -164,7 +164,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="optional"
+                android:hint="@string/optional"
                     android:imeOptions="actionDone"/>
         </LinearLayout>
 
@@ -182,7 +182,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="You may specify custom text to appear instead of the standard description."/>
+                android:text="@string/custom_description" />
         </LinearLayout>
 
         <LinearLayout
@@ -197,7 +197,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Custom display text"
+                android:text="@string/custom_display_text"
                     android:textColor="#FFFFFF"/>
 
             <EditText
@@ -205,7 +205,7 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="optional"
+                android:hint="@string/optional"
                     android:imeOptions="actionDone"/>
         </LinearLayout>
 
@@ -217,18 +217,20 @@
                 android:orientation="horizontal">
 
             <Button
+                android:id="@+id/portfolio_item_cancel"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/cancel" />
+
+            <Button
                     android:id="@+id/portfolio_item_save"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="OK"/>
+                android:text="@string/ok" />
 
-            <Button
-                    android:id="@+id/portfolio_item_cancel"
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="Cancel"/>
+
         </LinearLayout>
     </LinearLayout>
 

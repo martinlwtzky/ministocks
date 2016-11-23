@@ -29,46 +29,46 @@
               android:padding="6dip">
 
     <LinearLayout
-            android:orientation="horizontal"
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_weight="1">
+        android:layout_weight="1"
+        android:orientation="horizontal">
 
         <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
                 android:layout_weight="9"
-                android:layout_height="fill_parent">
+            android:orientation="vertical">
 
             <TextView
                     android:id="@+id/portfolio_list_item_symbol"
                     android:layout_width="fill_parent"
                     android:layout_height="34dip"
                     android:layout_weight="4"
-                    android:textSize="30dp"
+                android:gravity="center_vertical"
                     android:textColor="#FFFFFF"
-                    android:gravity="center_vertical"/>
+                android:textSize="30dp" />
 
             <TextView
                     android:id="@+id/portfolio_list_item_name"
                     android:layout_width="fill_parent"
                     android:layout_height="39dip"
                     android:layout_weight="4"
-                    android:textColor="#FFFFFF"
                     android:gravity="top"
-                    android:text="No description"/>
+                android:text="@string/no_description"
+                android:textColor="#FFFFFF" />
 
             <LinearLayout
-                    android:orientation="vertical"
                     android:layout_width="fill_parent"
                     android:layout_height="59dip"
-                    android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="vertical">
 
                 <LinearLayout
-                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
                     <TextView
                             android:id="@+id/portfolio_list_item_buy_price_label"
@@ -76,23 +76,23 @@
                             android:layout_height="fill_parent"
                             android:layout_weight="8"
                             android:gravity="center_vertical"
-                            android:textColor="#999999"
-                            android:text="Buy price:"/>
+                        android:text="@string/buy_price_"
+                        android:textColor="#999999" />
 
                     <TextView
                             android:id="@+id/portfolio_list_item_buy_price"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:layout_weight="7"
-                            android:textColor="#66CCCC"
-                            android:gravity="center_vertical"/>
+                        android:gravity="center_vertical"
+                        android:textColor="#66CCCC" />
 
                 </LinearLayout>
                 <LinearLayout
-                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
                     <TextView
                             android:id="@+id/portfolio_list_item_date_label"
@@ -100,23 +100,23 @@
                             android:layout_height="fill_parent"
                             android:layout_weight="8"
                             android:gravity="center_vertical"
-                            android:textColor="#999999"
-                            android:text="Buy date:"/>
+                        android:text="@string/buy_date_"
+                        android:textColor="#999999" />
 
                     <TextView
                             android:id="@+id/portfolio_list_item_date"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:layout_weight="7"
-                            android:textColor="#FFFFFF"
-                            android:gravity="center_vertical"/>
+                        android:gravity="center_vertical"
+                        android:textColor="#FFFFFF" />
 
                 </LinearLayout>
                 <LinearLayout
-                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
-                        android:layout_weight="1">
+                    android:layout_weight="1"
+                    android:orientation="horizontal">
 
                     <TextView
                             android:id="@+id/portfolio_list_item_quantity_label"
@@ -124,59 +124,59 @@
                             android:layout_height="fill_parent"
                             android:layout_weight="8"
                             android:gravity="center_vertical"
-                            android:textColor="#999999"
-                            android:text="Quantity:"/>
+                        android:text="@string/quantity_"
+                        android:textColor="#999999" />
 
                     <TextView
                             android:id="@+id/portfolio_list_item_quantity"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:layout_weight="7"
-                            android:textColor="#FFFFFF"
-                            android:gravity="center_vertical"/>
+                        android:gravity="center_vertical"
+                        android:textColor="#FFFFFF" />
 
                 </LinearLayout>
             </LinearLayout>
         </LinearLayout>
         <LinearLayout
-                android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_weight="8"
                 android:layout_height="fill_parent"
-                android:layout_marginLeft="10dip">
+            android:layout_marginLeft="10dip"
+            android:layout_weight="8"
+            android:orientation="vertical">
 
             <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="fill_parent"
                     android:layout_height="30dip"
-                    android:paddingTop="3dip"
-                    android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:paddingTop="3dip">
 
                 <TextView
                         android:id="@+id/portfolio_list_item_current_price_label"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
-                        android:textSize="20dp"
                         android:gravity="center_vertical"
+                    android:text="@string/price_"
                         android:textColor="#999999"
-                        android:text="Price:"/>
+                    android:textSize="20dp" />
 
                 <TextView
                         android:id="@+id/portfolio_list_item_current_price"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
-                        android:textSize="20dp"
+                    android:gravity="right"
                         android:textColor="#FFFFFF"
-                        android:gravity="right"/>
+                    android:textSize="20dp" />
 
             </LinearLayout>
             <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="fill_parent"
                     android:layout_height="20dip"
-                    android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
                 <TextView
                         android:id="@+id/portfolio_list_item_limit_high_label"
@@ -184,23 +184,23 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:textColor="#999999"
-                        android:text="High alert:"/>
+                    android:text="@string/high_alert_"
+                    android:textColor="#999999" />
 
                 <TextView
                         android:id="@+id/portfolio_list_item_limit_high"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
-                        android:textColor="#FFEE33"
-                        android:gravity="right"/>
+                    android:gravity="right"
+                    android:textColor="#FFEE33" />
 
             </LinearLayout>
             <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="fill_parent"
                     android:layout_height="20dip"
-                    android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
                 <TextView
                         android:id="@+id/portfolio_list_item_limit_low_label"
@@ -208,23 +208,23 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:textColor="#999999"
-                        android:text="Low alert:"/>
+                    android:text="@string/low_alert_"
+                    android:textColor="#999999" />
 
                 <TextView
                         android:id="@+id/portfolio_list_item_limit_low"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
-                        android:textColor="#FF66FF"
-                        android:gravity="right"/>
+                    android:gravity="right"
+                    android:textColor="#FF66FF" />
 
             </LinearLayout>
             <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="fill_parent"
                     android:layout_height="8dip"
-                    android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
                 <TextView
                         android:layout_width="fill_parent"
@@ -242,17 +242,17 @@
 
             </LinearLayout>
             <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="fill_parent"
                     android:layout_height="20dip"
-                    android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_weight="8"
-                        android:gravity="left">
+                    android:gravity="left"
+                    android:orientation="horizontal">
 
                     <TextView
                             android:id="@+id/portfolio_list_item_last_change_label"
@@ -260,39 +260,39 @@
                             android:layout_height="fill_parent"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:textColor="#999999"
-                            android:text="Last ch:"/>
+                        android:text="@string/last_ch_"
+                        android:textColor="#999999" />
 
                 </LinearLayout>
                 <LinearLayout
-                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_weight="5"
-                        android:gravity="right">
+                    android:gravity="right"
+                    android:orientation="horizontal">
 
                     <TextView
                             android:id="@+id/portfolio_list_item_last_change"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:layout_weight="1"
-                            android:textColor="#FFFFFF"
-                            android:gravity="right"/>
+                        android:gravity="right"
+                        android:textColor="#FFFFFF" />
 
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="fill_parent"
                     android:layout_height="20dip"
-                    android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
                 <LinearLayout
-                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_weight="9"
-                        android:gravity="left">
+                    android:gravity="left"
+                    android:orientation="horizontal">
 
                     <TextView
                             android:id="@+id/portfolio_list_item_total_change_label"
@@ -300,32 +300,32 @@
                             android:layout_height="fill_parent"
                             android:layout_weight="1"
                             android:gravity="center_vertical"
-                            android:textColor="#999999"
-                            android:text="Total:"/>
+                        android:text="@string/total_"
+                        android:textColor="#999999" />
 
                 </LinearLayout>
                 <LinearLayout
-                        android:orientation="horizontal"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_weight="5"
-                        android:gravity="right">
+                    android:gravity="right"
+                    android:orientation="horizontal">
 
                     <TextView
                             android:id="@+id/portfolio_list_item_total_change"
                             android:layout_width="fill_parent"
                             android:layout_height="fill_parent"
                             android:layout_weight="1"
-                            android:textColor="#FFFFFF"
-                            android:gravity="right"/>
+                        android:gravity="right"
+                        android:textColor="#FFFFFF" />
 
                 </LinearLayout>
             </LinearLayout>
             <LinearLayout
-                    android:orientation="horizontal"
                     android:layout_width="fill_parent"
                     android:layout_height="20dip"
-                    android:layout_weight="1">
+                android:layout_weight="1"
+                android:orientation="horizontal">
 
                 <TextView
                         android:id="@+id/portfolio_list_item_holding_value_label"
@@ -333,16 +333,16 @@
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
                         android:gravity="center_vertical"
-                        android:textColor="#999999"
-                        android:text="Holding:"/>
+                    android:text="@string/holding_"
+                    android:textColor="#999999" />
 
                 <TextView
                         android:id="@+id/portfolio_list_item_holding_value"
                         android:layout_width="fill_parent"
                         android:layout_height="fill_parent"
                         android:layout_weight="1"
-                        android:textColor="#CCFF66"
-                        android:gravity="right"/>
+                    android:gravity="right"
+                    android:textColor="#CCFF66" />
 
             </LinearLayout>
         </LinearLayout>
