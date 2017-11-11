@@ -29,6 +29,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Assume;
 
 import java.util.Arrays;
 import java.util.HashMap;
@@ -42,24 +43,28 @@ import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
 
 
-public class YahooStockQuoteRepositoryTests {
+public class YahooStockQuoteRepository2Tests {
 
-    private YahooStockQuoteRepository yahooRepository;
+    private YahooStockQuoteRepository2 quoteRepository;
 
     @Before
     public void setUp() {
         FxChangeRepository fxRepository = new FxChangeRepository();
-        yahooRepository = new YahooStockQuoteRepository(fxRepository);
+        quoteRepository = new YahooStockQuoteRepository2(fxRepository);
     }
 
+    @Test
     public void retrieveQuotesAsJson() {
+        // Skipif
+        Assume.assumeTrue(System.getenv("TRAVIS_CI") == null);
+
         // Arrange
         List<String> symbols = Arrays.asList("AAPL", "GOOG");
         JSONArray json = null;
 
         // Act
         try {
-            json = this.yahooRepository.retrieveQuotesAsJson(new MockCache(), symbols);
+            json = this.quoteRepository.retrieveQuotesAsJson(new MockCache(), symbols);
         } catch (JSONException ignored) {
         }
 
@@ -69,33 +74,58 @@ public class YahooStockQuoteRepositoryTests {
 
         JSONObject aaplJson = json.optJSONObject(0);
         assertEquals("AAPL", aaplJson.optString("symbol"));
-        assertTrue(Arrays.asList("NasdaqNM", "NMS").contains(aaplJson.optString("exchange")));
+        assertTrue(Arrays.asList(
+                "NasdaqNM",
+                "NMS",
+                "Nasdaq Global Select",
+                "NasdaqGS"
+        ).contains(aaplJson.optString("exchange")));
+
         assertEquals("Apple Inc.", aaplJson.optString("name"));
 
         JSONObject googJson = json.optJSONObject(1);
         assertEquals("GOOG", googJson.optString("symbol"));
-        assertTrue(Arrays.asList("NasdaqNM", "NMS").contains(googJson.optString("exchange")));
+        assertTrue(Arrays.asList(
+                "NasdaqNM",
+                "NMS",
+                "Nasdaq Global Select",
+                "NasdaqGS"
+        ).contains(googJson.optString("exchange")));
         assertEquals("Alphabet Inc.", googJson.optString("name"));
     }
 
+    @Test
     public void getQuotes() {
+        // Skipif
+        Assume.assumeTrue(System.getenv("TRAVIS_CI") == null);
+
         // Arrange
         List<String> symbols = Arrays.asList("AAPL", "GOOG");
 
         // Act
-        HashMap<String, StockQuote> stockQuotes = yahooRepository.getQuotes(new MockCache(), symbols);
+        HashMap<String, StockQuote> stockQuotes = quoteRepository.getQuotes(new MockCache(), symbols);
 
         // Assert
         assertEquals(2, stockQuotes.size());
 
         StockQuote aaplQuote = stockQuotes.get("AAPL");
         assertEquals("AAPL", aaplQuote.getSymbol());
-        assertTrue(Arrays.asList("NasdaqNM", "NMS").contains(aaplQuote.getExchange()));
+        assertTrue(Arrays.asList(
+                "NasdaqNM",
+                "NMS",
+                "Nasdaq Global Select",
+                "NasdaqGS"
+        ).contains(aaplQuote.getExchange()));
         assertEquals("Apple Inc.", aaplQuote.getName());
 
         StockQuote googQuote = stockQuotes.get("GOOG");
         assertEquals("GOOG", googQuote.getSymbol());
-        assertTrue(Arrays.asList("NasdaqNM", "NMS").contains(googQuote.getExchange()));
+        assertTrue(Arrays.asList(
+                "NasdaqNM",
+                "NMS",
+                "Nasdaq Global Select",
+                "NasdaqGS"
+        ).contains(googQuote.getExchange()));
         assertEquals("Alphabet Inc.", googQuote.getName());
     }
 }

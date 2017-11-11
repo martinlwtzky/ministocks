@@ -67,13 +67,10 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
     private static boolean mPendingUpdate = false;
     private static String mSymbolSearchKey = "";
     private final String CHANGE_LOG = ""
-            + "New features:<br/><br/>"
-            + "• Option to refresh directly from widget when enabled in Settings > Update Options.<br/><br/>"
+//            + "New features:<br/><br/>"
+//            + "• TODO.<br/><br/>"
             + "Multiple bug fixes:<br/><br/>"
-            + "• Storing the buy price in the portfolio with 4dp only retains up to the 3rd dp.<br/><br/>"
-            + "• Stocks with a value under 10 can show too many decimal places after reboot.<br/><br/>"
-            + "• Calculation of holding in portfolio is incorrect in some locales.";
-    //+ "<br /><br /><i>If you appreciate this app please rate it 5 stars in the Android market!</i>"
+            + "• Switch to new API to support non-US stocks";
 
     // Fields for time pickers
     private TimePickerDialog.OnTimeSetListener mTimeSetListener;
@@ -300,6 +297,18 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
     private void showDisclaimer() {
         String title = "License";
         String body = "The MIT License (MIT)<br/><br/>Copyright © 2013 Nitesh Patel<br/><br />Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the \"Software\"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:<br /><br />The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.<br/><br/>THE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.";
+        DialogTools.showSimpleDialog(this, title, body);
+    }
+
+    private void showAttributions() {
+        String title = "Attributions";
+        String body = "Data provided for free by IEX (https://iextrading.com/developer).";
+        DialogTools.showSimpleDialog(this, title, body);
+    }
+
+    private void showTermsOfService() {
+        String title = "Terms of Service (data)";
+        String body = "See https://iextrading.com/api-exhibit-a";
         DialogTools.showSimpleDialog(this, title, body);
     }
 
@@ -621,6 +630,24 @@ public class PreferencesActivity extends PreferenceActivity implements OnSharedP
             @Override
             public boolean onPreferenceClick(Preference preference) {
                 showChangeLog();
+                return true;
+            }
+        });
+        // Hook the Attributions preference to the Attributions dialog
+        Preference attributions = findPreference("attributions");
+        attributions.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                showAttributions();
+                return true;
+            }
+        });
+        // Hook the Terms of Service preference to the Terms of Service dialog
+        Preference termsOfService = findPreference("termsOfService");
+        termsOfService.setOnPreferenceClickListener(new OnPreferenceClickListener() {
+            @Override
+            public boolean onPreferenceClick(Preference preference) {
+                showTermsOfService();
                 return true;
             }
         });
