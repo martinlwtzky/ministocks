@@ -30,13 +30,13 @@
                 android:focusable="true">
 
     <ImageView
-            android:id="@+id/widget_bg"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="horizontal"
-            android:adjustViewBounds="false"
-            android:scaleType="fitXY"
-            android:src="@drawable/ministock_bg_transparent68_large"/>
+        android:id="@+id/widget_bg"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:adjustViewBounds="false"
+        android:orientation="horizontal"
+        android:scaleType="fitXY"
+        android:src="@drawable/ministock_bg_transparent68_large" />
 
     <LinearLayout
             android:layout_width="fill_parent"
